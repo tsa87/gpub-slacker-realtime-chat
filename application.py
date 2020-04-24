@@ -1,7 +1,7 @@
 import os
 
 from flask import Flask, session, render_template, request, redirect, flash, jsonify
-from flask_session.__init__ import Session
+from flask_session import Session
 from flask_socketio import SocketIO, emit
 from models import *
 
