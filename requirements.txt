@@ -4,4 +4,5 @@ gunicorn
 eventlet
 requests
 flask_sqlalchemy
+Werkzeug==0.16.0
 Flask-Session
