@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gpub Slackers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .container > div {
+        margin: 20px;
+        padding: 20px;
+      }
+
+      @media (min-width: 700px) {
+        #side_bar {
+          width: 200px;
+          height: 700px;
+        }
+        #chat_window {
+          width: 500px;
+          height: 700px;
+        }
+        #chat_input {
+          width: 700px;
+        }
+        a::before {
+          content: "=> Go to # ";
+          font-weight: bold;
+        }
+      }
+
+      @media (max-width: 699px) {
+        #side_bar {
+          width: 150px;
+          height: 500px;
+        }
+        #chat_window {
+          width: 350px;
+          height: 500px;
+        }
+        #chat_input {
+          width: 500px;
+        }
+        a::before {
+          content: " # ";
+          font-weight: bold;
+        }
+      }
+
+      #side_bar {
+        background-color: teal;
+      }
+
+      #side_bar:hover {
+        background-color: orange;
+      }
+
+      #chat_window {
+        background-color: yellow;
+      }
+
+      #chat_input {
+        bottom: 0;
+        background-color: blue;
+      }
+
+      p::selection {
+        color: red;
+        background-color: yellow;
+      }
+
+      @@media print {
+        .screen_only {
+          display: none;
+        }
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+
+      <div id="side_bar" class="screen_only">
+        Channel:</br>
+        <input name="channel" type="radio" value="general"><a>General</a></br>
+        <input name="channel" type="radio" value="match_making"><a>Match Making</a></br>
+        <input name="channel" type="radio" value="roasting"><a>Roasting</a></br>
+      </div>
+
+      <div id="chat_window">
+        <p>Hello</p>
+        <p>Hi</p>
+        <p>What</p>
+      </div>
+
+      <div id="chat_input">
+        <form>
+          <input type="text" placeholder="..." name="message">
+          <button>Send</button>
+        </form>
+      </div>
+
+    </div>
+
+  </body>
+</html>

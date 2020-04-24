@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gpub Slackers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+  </head>
+
+  <body>
+    <div class="container-fluid">
+
+      {% for error in errors %}
+        <div class="alert alert-danger" role="alert">
+          {{ error }}
+        </div>
+      {% endfor %}
+
+      <div class="row">
+
+        <!--SIDE BAR-->
+        <div id="side_bar" class="col-lg-3 col-12">
+
+          <h3>Channels: </h3>
+
+          <form>
+            <input id ="channel_name" autocomplete="off" placeholder="Channel Name" type="text">
+            <button id="new_channel_button">Add New Channel</button>
+          </form>
+
+          <ul id="channel_list" class="list-group">
+            {% for name in channels %}
+              <li class="list-group-item"><a href={{ '/channels/' + name }}># {{ name }} </a></li>
+            {% endfor %}
+          </ul>
+
+        </div>
+
+
+        <!--MAIN CHAT-->
+        <div class="col-lg-9 col-12">
+
+          <div class="row space-between">
+            <div class="col">
+              <div class="row">
+                <h3>Current channel: #</h3></nobr>
+                <h3 id="current_channel">{{ selected_channel }}</h3>
+              </div>
+            </div>
+            <div class="col">
+              <a class="btn btn-primary" href="/logout">Logout</a>
+            </div>
+          </div>
+
+          <h5 id="timer"></h5>
+
+          <div id="chat_window" style="height:500px;line-height:3em;overflow:auto;padding:5px;">
+            <ul id="messages">
+              {% for message in messages %}
+                <div class="alert alert-info chat_messages" role="alert">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            </ul>
+            <ul id="new_messages">
+            </ul>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div id="chat_input" class="col-12">
+          <form>
+            <input id="message" type="text" autocomplete="off" class="form-control" placeholder="Enter message here" name="message">
+            <button id="send_button">Send</button>
+          </form>
+        </div>
+      </div>
+
+      <h6>Pubg tonight?</h6>
+      <div>Yes Votes: <span id="yes">{{ votes["yes"] }}</span></div>
+      <div>No Votes: <span id="no">{{ votes["no"] }}</span></div>
+      <div>Maybe Votes: <span id="maybe">{{ votes["maybe"] }}<span></div>
+      <hr>
+      <ul id="votes">
+      </ul>
+      <button class="vote" data-vote="yes">Yes</button>
+      <button class="vote" data-vote="no">No</button>
+      <button class="vote" data-vote="maybe">Maybe</button>
+
+
+    </div>
+  </body>
+</html>
