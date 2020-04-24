@@ -1,1 +1,1 @@
-web: flask run
+web: pip install Flask-Session\ flask run
